@@ -7,9 +7,9 @@ if [ -f "VERSION" ]; then
     cp VERSION VERSION.backup
 fi
 
-docker-compose down
+docker-compose -f docker-compose.yml down
 export VERSION=$VERSION
-docker-compose up -d --build
+docker-compose -f docker-compose.yml up -d --build
 sleep 10
 
 if ./scripts/health-check.sh; then
