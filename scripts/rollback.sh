@@ -9,8 +9,8 @@ else
 fi
 
 export VERSION=$(cat VERSION)
-docker-compose -f docker-compose.yml down
-docker-compose -f docker-compose.yml up -d --build
+docker compose -f docker-compose.yml down
+docker compose -f docker-compose.yml up -d --build
 
 sleep 10
 echo "Rolled back to version: $(cat VERSION)"
