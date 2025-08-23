@@ -1,7 +1,5 @@
 #!/bin/bash
-
-
-echo "Rolling back to previous version..."
+echo "Rolling back."
 
 if [ -f "VERSION.backup" ]; then
     cp VERSION.backup VERSION
@@ -13,4 +11,12 @@ export VERSION=$(cat VERSION)
 docker-compose down
 docker-compose up -d --build
 
-echo "✅ Rolled back to version: $(cat VERSION)"
+sleep 10
+echo "Rolled back to version: $(cat VERSION)"
+
+
+if ./scripts/health-check.sh; then
+    echo "Rollback successful!"
+else
+    echo "Rollback failed."
+fi

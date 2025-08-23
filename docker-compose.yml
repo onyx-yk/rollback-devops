@@ -1,9 +1,12 @@
 version: '3.8'
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        - VERSION=${VERSION:-v1}
     ports:
       - "8080:5000"
     environment:
-      - VERSION=${VERSION:-v1}
+      - APP_VERSION=${VERSION:-v1}
     restart: unless-stopped

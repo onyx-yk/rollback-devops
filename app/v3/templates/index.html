@@ -1,0 +1,43 @@
+<!-- apps/v3/templates/index.html - SAME AS V2 (but app.py will be broken) -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RNG Generator V3</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .container { text-align: center; }
+        button { padding: 10px 20px; margin: 10px; font-size: 16px; }
+        .result { margin-top: 20px; padding: 15px; background: #f0f0f0; }
+        .version { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 RNG Generator - <span class="version">Version 3</span></h1>
+        <p>This version has bugs (for testing rollback)</p>
+        
+        <div>
+            <button onclick="generate('number')">Random Number (1-100)</button>
+            <button onclick="generate('dice')">Dice Roll (1-6)</button>
+            <button onclick="generate('coin')">Coin Flip</button>
+        </div>
+        
+        <div id="result" class="result" style="display: none;">
+            <h3>Result: <span id="output"></span></h3>
+        </div>
+    </div>
+
+    <script>
+        async function generate(type) {
+            try {
+                const response = await fetch(`/generate?type=${type}`);
+                const data = await response.json();
+                document.getElementById('output').textContent = data.result;
+                document.getElementById('result').style.display = 'block';
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
