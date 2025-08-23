@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 echo "Rolling back."
 
 if [ -f "VERSION.backup" ]; then

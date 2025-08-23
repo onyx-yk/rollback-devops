@@ -1,6 +1,6 @@
 #!/bin/bash
 # health-check.sh
-
+set -x
 echo "Checking if app is healthy..."
 
 if curl -f http://localhost:8080 > /dev/null 2>&1; then

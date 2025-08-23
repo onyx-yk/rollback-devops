@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 VERSION=$(cat VERSION)
 echo "Deploying version: $VERSION"
 
