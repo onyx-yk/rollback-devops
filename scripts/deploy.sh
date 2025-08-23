@@ -8,7 +8,6 @@ if [ -f "VERSION" ]; then
 fi
 
 docker compose -f docker-compose.yml down
-export VERSION=$VERSION
 docker compose -f docker-compose.yml up -d --build
 sleep 10
 
