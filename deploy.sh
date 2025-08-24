@@ -11,9 +11,9 @@ docker compose -f docker-compose.yml down
 docker compose -f docker-compose.yml up -d --build
 sleep 10
 
-if ./scripts/health-check.sh; then
+if ./health-check.sh; then
     echo "Deployment success."
 else
     echo "Deployment failed, rolling back."
-    ./scripts/rollback.sh
+    ./rollback.sh
 fi
