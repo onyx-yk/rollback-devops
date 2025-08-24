@@ -7,6 +7,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/health')
+def health():
+    return "OK", 200
+
 @app.route('/generate')
 def generate():
     number = random.randint(1, 100)
