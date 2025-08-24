@@ -5,7 +5,7 @@ set -x
 echo "Checking if app is healthy..."
 
 for i in {1..12}; do 
-    if curl -f http://localhost:8080; then
+    if curl -f http://localhost:8080/; then
         echo "App is healthy."
         exit 0
     else

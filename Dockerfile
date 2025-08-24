@@ -1,10 +1,7 @@
-FROM python:3.12.4-slim
+FROM python:3.12-slim
 WORKDIR /app
-
-ARG VERSION=v1
-COPY app/${VERSION}/requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY app/${VERSION}/ .
-EXPOSE 5000
-CMD ["python", "app${VERSION:1}.py"]
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 8080
+CMD ["python", "app.py"]
