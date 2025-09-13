@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import random
+import os
 
 app = Flask(__name__)
 
@@ -14,7 +15,9 @@ def health():
 @app.route('/generate')
 def generate():
     number = random.randint(1, 100)
-    return {'number': number, 'version': 'v1'}
+    # Read the version from environment variable or default to 'v1'
+    version = os.getenv('APP_VERSION', 'v1')
+    return {'number': number, 'version': version}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)  
+    app.run(host='0.0.0.0', port=5000)

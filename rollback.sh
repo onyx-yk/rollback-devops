@@ -10,13 +10,13 @@ fi
 
 export VERSION=$(cat VERSION)
 docker compose -f docker-compose.yml down
-docker compose -f docker-compose.yml up -d --build
+docker compose -f docker-compose.yml build --build-arg APP_VERSION=$VERSION
+docker compose -f docker-compose.yml up -d
 
 sleep 10
 echo "Rolled back to version: $(cat VERSION)"
 
-
-if ./scripts/health-check.sh; then
+if ./health-check.sh; then
     echo "Rollback successful!"
 else
     echo "Rollback failed."

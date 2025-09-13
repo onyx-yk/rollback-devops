@@ -1,11 +1,10 @@
 #!/bin/bash
-# health-check.sh
 set -x
 
-echo "Checking if app is healthy..."
+echo "Checking if app is healthy."
 
 for i in {1..12}; do 
-    if curl -f http://localhost:8080/health; then
+    if curl -f http://localhost:5000/health; then
         echo "App is healthy."
         exit 0
     else
