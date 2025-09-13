@@ -1,11 +1,11 @@
 FROM python:3.12-slim
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
+ARG APP_VERSION
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY ${APP_VERSION}/app.py .
 COPY ${APP_VERSION}/templates/ ./templates/
-ARG APP_VERSION
 ENV APP_VERSION=${APP_VERSION}
 EXPOSE 5000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
