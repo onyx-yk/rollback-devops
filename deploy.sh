@@ -8,7 +8,7 @@ export VERSION=$VERSION
 docker compose -f docker-compose.yml down
 docker compose -f docker-compose.yml build --build-arg VERSION=$VERSION
 docker compose -f docker-compose.yml up -d
-sleep 10
+sleep 5
 
 if ./health-check.sh; then
     echo "Deployment success."
