@@ -3,7 +3,7 @@ set -x
 
 echo "Checking if app is healthy."
 
-for i in {1..12}; do 
+for i in {1..3}; do 
     if curl -f http://localhost:5000/health; then
         echo "App is healthy."
         exit 0

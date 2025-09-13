@@ -4,6 +4,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY app.py .
+COPY templates/ ./templates/
 ARG APP_VERSION
 ENV APP_VERSION=${APP_VERSION}
 EXPOSE 5000

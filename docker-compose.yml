@@ -2,9 +2,10 @@ version: '3.8'
 services:
   web:
     build:
-      context: .
+      context: ./${VERSION:-v1}
+      dockerfile: ../Dockerfile
       args:
-        - VERSION=${VERSION:-v1}
+        - APP_VERSION=${VERSION:-v1}
     ports:
       - "5000:5000"
     environment:

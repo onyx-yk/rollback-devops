@@ -4,10 +4,19 @@ import random
 app = Flask(__name__)
 
 @app.route('/')
+
 def home():
-    # This will cause an error - intentional bug
-    undefined_variable = some_variable_that_doesnt_exist
     return render_template('index.html', version='v3')
+
+@app.route('/health')
+def health():
+    try:
+        # assume this is the code check
+        undefined_variable = some_variable_that_doesnt_exist
+        return "OK", 200
+    except Exception:
+        return "BAD", 500
+
 
 @app.route('/generate')
 def generate():

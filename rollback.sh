@@ -2,7 +2,11 @@
 set -x
 echo "Rolling back."
 
-if [ -f "VERSION.backup" ]; then
+if [ -f "success_ver.txt" ]; then
+    ROLLBACK_VERSION=$(cat success_ver.txt)
+    echo "Rolling back to last version: $ROLLBACK_VERSION"
+    echo "$ROLLBACK_VERSION" > VERSION
+elif [ -f "VERSION.backup" ]; then
     cp VERSION.backup VERSION
 else
     echo "v1" > VERSION

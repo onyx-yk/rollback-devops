@@ -15,7 +15,6 @@ def health():
 @app.route('/generate')
 def generate():
     number = random.randint(1, 100)
-    # Read the version from environment variable or default to 'v1'
     version = os.getenv('APP_VERSION', 'v1')
     return {'number': number, 'version': version}
 
