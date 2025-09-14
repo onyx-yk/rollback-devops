@@ -2,12 +2,12 @@ version: '3.8'
 services:
   web:
     build:
-      context: ./${VERSION:-v1}
-      dockerfile: ../Dockerfile
+      context: .
+      dockerfile: Dockerfile
       args:
-        - APP_VERSION=${VERSION:-v1}
+        - APP_VERSION=${VERSION:-$(cat VERSION)}
     ports:
       - "5000:5000"
     environment:
-      - APP_VERSION=${VERSION:-v1}
+      - APP_VERSION=${VERSION:-$(cat VERSION)}
     restart: unless-stopped
